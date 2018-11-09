@@ -5,7 +5,8 @@
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
   <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
   <script src="ejs.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
@@ -18,18 +19,18 @@
     var config = {
       apiKey: "AIzaSyAu3V5oNwWS_ng4pJgAqHFDIXzq6Ec00LM",
       authDomain: "shopee-2bff8.firebaseapp.com",
-      databaseURL: "https://shopee-2bff8.firebaseio.com",
-      projectId: "shopee-2bff8",
-      storageBucket: "shopee-2bff8.appspot.com",
-
-      messagingSenderId: "880895110797"
     };
     firebase.initializeApp(config);
     // Initialize Cloud Firestore through Firebase
-    var db = firebase.firestore();
-    // Disable deprecated features
-    db.settings({
-      timestampsInSnapshots: true
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        window.location.href = 'home.html';
+      } else {
+        // User is signed out.
+        // ...
+        window.location.href = 'login.html';
+      }
     });
   </script>
   <style>
@@ -163,7 +164,7 @@
       </p>
       <p> &nbsp;&nbsp; ????????????????????? </p>
       <div id="allPro"></div>
-      <script id="allPro_template" type="text/template"> 
+      <script id="allPro_template" type="text/template">
       <ons-row>
 
           <% allPro.forEach(function(allPro){
@@ -235,10 +236,10 @@
 
   }
   function getHomeData() {
-     var code = localStorage.getItem('code');
-     if(code){
-       $('#search').html(code);
-     }
+    var code = localStorage.getItem('code');
+    if (code) {
+      $('#search').html(code);
+    }
     var docRef = db.collection("UI").doc("home");
     docRef.get().then(function (doc) {
       if (doc.exists) {
