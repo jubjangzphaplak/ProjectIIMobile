@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "238081860305",
+    "firebase_url": "https://shopee-6ab15.firebaseio.com",
+    "project_id": "shopee-6ab15",
+    "storage_bucket": "shopee-6ab15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238081860305:android:92c8ea643a891bb0",
+        "android_client_info": {
+          "package_name": "com.jidapa.hello"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238081860305-g1pnicjk66c65id5t378caemahn44hr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBujbeCu7znuY8leNoGvkwYTC2jPVdq2Mo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238081860305:android:25df0626f07e0067",
+        "android_client_info": {
+          "package_name": "com.jubjang.hello"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238081860305-g1pnicjk66c65id5t378caemahn44hr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBujbeCu7znuY8leNoGvkwYTC2jPVdq2Mo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
