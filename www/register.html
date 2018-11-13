@@ -5,84 +5,114 @@
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="ejs.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
     <script src="cordova.js"></script>
+
     <script>
         // Initialize Firebase
         var config = {
-            apiKey: "AIzaSyAu3V5oNwWS_ng4pJgAqHFDIXzq6Ec00LM",
-            authDomain: "shopee-2bff8.firebaseapp.com",
+            apiKey: "AIzaSyDk4uvNp5soVTYna-5gn46EYdOWwNykBDk",
+            authDomain: "shopee-87359.firebaseapp.com",
+
         };
         firebase.initializeApp(config);
 
+
     </script>
-    <style>
-        .toolbaricon {
-  padding-left: 5px;
-  padding-bottom: 5px;
-  padding-right: 5px;
-  color: orange;
-}
+  <style>
+    .page,
+    .page__background,
+    .page__content {
+        background-color:salmon;
+        position: absolute;
+    }
+
+    .toolbaricon {
+        padding-left: 5px;
+        padding-bottom: 5px;
+        padding-right: 5px;
+        color: white;
+    }
+
+    * {
+        font-family: 'Sniglet', cursive;
+
+
+    }
+
+    .title {
+
+        font-family: 'Sniglet', cursive;
+    }
+
+    .text {
+        font-family: 'Sniglet', cursive;
+    }
+    .logFB{
+        background-color: rgb(0, 0, 167);
+    }
+    .google{
+        background-color: rgb(189, 0, 0);
+    }
 </style>
 </head>
+
 
 
 <body>
 
 
-    <ons-page>
-        <div style="text-align: center; margin-top: 30px;">
+        <ons-page>
 
-            <h3> register new user</h3>
+            <div style="text-align: center; margin-top: 30px;">
+                <h3>
+                    <b>Register New User</b>
+    
+                </h3>
             <p>
-                <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+                <ons-input id="username" modifier="underbar" placeholder="Username" float ng-model="page.username"></ons-input>
             </p>
             <p>
-                <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float></ons-input>
+                <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float ng-model="page.password"></ons-input>
             </p>
-            <p style="margin-top: 30px;">
-                <ons-button onclick="register()">Sign in</ons-button>
-            </p>
-            <p style="margin-top: 50px;">
-                <a href="register.html"> Sign up for a new </a>
+            <p style="margin-top: 40px;">
+                <ons-button onclick="register()" icon="fa-send">&nbsp; &nbsp; Sign Up for New User</ons-button>
             </p>
 
         </div>
     </ons-page>
 
-
-
     <script>
-
         function register() {
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
+            firebase.auth().createUserWithEmailAndPassword(username, password).catch(function (error) {
 
-            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-                // Handle Errors here.
+                //Handle Error here
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                ons.notification.alert(errorCode + ':' + errorMessage);
+                ons.notification.alert(error.code + ':' + error.message);
 
             });
-
         }
+
+
+
 
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
-                // User is signed in.
+
                 window.location.href = 'home.html';
+
+
             }
         });
-
-
-
     </script>
-
-
 </body>
+
+
 
 </html>
