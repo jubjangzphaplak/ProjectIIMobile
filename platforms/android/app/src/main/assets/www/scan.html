@@ -8,34 +8,62 @@
     <title>Scanner</title>
     <script src="cordova.js"></script>
 
-</head>
-
-<body>
+    <style>
+            #overlay {
+                position: fixed;
+                /* Sit on top of the page content */
+                display: none;
+                /* Hidden by default */
+                width: 100%;
+                /* Full width (cover the whole page) */
+                height: 100%;
+                /* Full height (cover the whole page) */
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                /* Black background with opacity */
+                z-index: 2;
+                /* Specify a stack order in case you're using a different order for other elements */
+                cursor: pointer;
+                /* Add a pointer on hover */
+            }
+            #pic {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                font-size: 50px;
+                transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="overlay">
+            <div id="pic">
+                <img src="images/scan.png" alt="">
+            </div>
+        </div>
     <script>
         document.addEventListener("deviceready", onDeviceReady, false);
         function onDeviceReady() {
-            // Start a scan. Scanning will continue until something is detected or
-            // `QRScanner.cancelScan()` is called.
+            document.getElementById("overlay").style.display = "block";
             QRScanner.scan(displayContents);
 
             function displayContents(err, text) {
                 if (err) {
-                    // an error occurred, or the scan was canceled (error code `6`)
                 } else {
-                    // The scan completed, display the contents of the QR code:
-                    localStorage.setItem("code", text);
+                    localStorage.setItem("code", text)
                     QRScanner.hide();
                     window.location.href = 'index.html';
-                    
                 }
             }
-
-            // Make the webview transparent so the video preview is visible behind it.
             QRScanner.show();
-            // Be sure to make any opaque HTML elements transparent here to avoid
-            // covering the video.
-
         }
+
+
 
 
 
@@ -50,3 +78,4 @@
 
     </script>
 </body>
+</html>
